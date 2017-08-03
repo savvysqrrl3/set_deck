@@ -46,7 +46,6 @@ class Deck(object):
       indx = random.randint(0, len(self.cards) - 1 - i)
       self.cards.append(self.cards[indx])
       self.cards.remove(self.cards[indx])
- master
     return self.cards
 
   def deal(self, n = 1):
@@ -63,12 +62,12 @@ class Deck(object):
       print "This is card",i,":", card["number"], card["shape"], card["color"], card["fill"] 
     return self
 
-# print Deck().suffle()
 
 class Player(object):
   def __init__(self, name,):
     self.name = name.capitalize()
     self.total = 0
+    self.set = []
   
   def info(self):
     pass
