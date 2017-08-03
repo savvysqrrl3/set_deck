@@ -7,6 +7,7 @@ class Deck(object):
     self.activeCards = []
     self.gen()
     self.shuffle()
+    self.deal(3)
   def gen(self):
     for color in range(0,3):
       for shape in range(0,3):
@@ -45,14 +46,17 @@ class Deck(object):
       self.cards.remove(self.cards[indx])
     return self.cards
 
-  def deal(self):
-    for card in range(0,3):
-      self.activeCards.append(self.cards[0])
-      del self.cards[0]
+  def deal(self, n = 1):
+    for i in range(0, n):
+      for card in range(0,3):
+        self.activeCards.append(self.cards[0])
+        del self.cards[0]
     return self
 
   def displayActive(self):
+    i = 0
     for card in self.activeCards:
+      i += 1
       print card["number"], card["shape"], card["color"], card["fill"] 
     return self
 
@@ -71,6 +75,6 @@ class Player(object):
 
 
 deck1 = Deck('deck1')
-deck1.deal()
+# deck1.deal()
 deck1.displayActive()
 # print deck1.cards
