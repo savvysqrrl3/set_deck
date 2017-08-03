@@ -1,0 +1,76 @@
+import random
+
+class Deck(object):
+  def __init__(self, name = 'deck_1',):
+    self.name = name
+    self.cards = []
+    self.activeCards = []
+    self.gen()
+    # self.shuffle()
+  def gen(self):
+    for color in range(0,3):
+      card = {}
+      if color == 0:
+        card['color'] = 'red'
+      elif color == 1:
+        card['color'] = 'blue'
+      elif color == 2:
+        card['color'] = 'green'
+      for shape in range(0,3):
+        if shape == 0:
+          card['shape'] = 'oval'
+        elif shape == 1:
+          card['shape'] = 'rectangle'
+        elif shape == 2:
+          card['shape'] = 'diamond'
+        for number in range(0,3):
+          if number == 0:
+            card['number'] = 'one'
+          elif number == 1:
+            card['number'] = 'three'
+          elif number == 1:
+            card['number'] = 'two'
+          for fill in range(0,3):
+            if fill == 0:
+              card['fill'] = 'solid'
+            elif fill == 1:
+              card['fill'] = 'dashed'
+            elif fill == 2:
+              card['fill'] = 'open'
+            self.cards.append(card)
+  def shuffle(self):
+    for i in range(0, len(self.cards)):
+      indx = random.randint(0, len(self.cards) - 1 - i)
+      self.cards.append(self.cards[indx])
+      self.cards.remove(self.cards[indx])
+    print self.cards
+    return self.cards
+
+  def deal(self):
+    for i in range(0,3):
+      self.activeCards.append(self.cards[0])
+      del self.cards[0]
+    return self
+
+  def displayActive(self):
+    for card in self.activeCards:
+      print card["number"], card["shape"], card["color"], card["fill"] 
+    return self
+
+# print Deck().suffle()
+
+class Player(object):
+  def __init__(self, name,):
+    self.name = name.capitalize()
+    self.total = 0
+  
+  def info(self):
+    pass
+    # print info
+
+
+
+
+deck1 = Deck('deck1')
+# deck1.deal().displayActive()
+print deck1.cards
