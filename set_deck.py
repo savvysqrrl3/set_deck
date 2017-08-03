@@ -6,31 +6,31 @@ class Deck(object):
     self.cards = []
     self.activeCards = []
     self.gen()
-    # self.shuffle()
+    self.shuffle()
   def gen(self):
     for color in range(0,3):
-      card = {}
-      if color == 0:
-        card['color'] = 'red'
-      elif color == 1:
-        card['color'] = 'blue'
-      elif color == 2:
-        card['color'] = 'green'
       for shape in range(0,3):
-        if shape == 0:
-          card['shape'] = 'oval'
-        elif shape == 1:
-          card['shape'] = 'rectangle'
-        elif shape == 2:
-          card['shape'] = 'diamond'
         for number in range(0,3):
-          if number == 0:
-            card['number'] = 'one'
-          elif number == 1:
-            card['number'] = 'three'
-          elif number == 1:
-            card['number'] = 'two'
           for fill in range(0,3):
+            card = {}
+            if shape == 0:
+              card['shape'] = 'oval'
+            elif shape == 1:
+              card['shape'] = 'rectangle'
+            elif shape == 2:
+              card['shape'] = 'diamond'
+            if number == 0:
+              card['number'] = 'one'
+            elif number == 1:
+              card['number'] = 'three'
+            elif number == 2:
+              card['number'] = 'two'
+            if color == 0:
+              card['color'] = 'red'
+            elif color == 1:
+              card['color'] = 'blue'
+            elif color == 2:
+              card['color'] = 'green'
             if fill == 0:
               card['fill'] = 'solid'
             elif fill == 1:
@@ -43,11 +43,10 @@ class Deck(object):
       indx = random.randint(0, len(self.cards) - 1 - i)
       self.cards.append(self.cards[indx])
       self.cards.remove(self.cards[indx])
-    print self.cards
     return self.cards
 
   def deal(self):
-    for i in range(0,3):
+    for card in range(0,3):
       self.activeCards.append(self.cards[0])
       del self.cards[0]
     return self
@@ -72,5 +71,6 @@ class Player(object):
 
 
 deck1 = Deck('deck1')
-# deck1.deal().displayActive()
-print deck1.cards
+deck1.deal()
+deck1.displayActive()
+# print deck1.cards
